@@ -14,7 +14,7 @@ class ShowActivePlugins {
 	private $failure = false;
 	
 	function __construct() {
-		if (is_network_admin()) {
+		if (is_network_admin() && @$_GET['plugin_status'] != 'mustuse') {
 			add_filter('plugin_row_meta', array($this, 'addActivationInformation'), null, 4);
 		}
 	}
